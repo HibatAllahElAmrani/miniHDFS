@@ -35,7 +35,6 @@ def put(filepath):
 
 def get(fileId):
   response = requests.get(f"{NAMENODE_URL}/files/{fileId}")
-  print(repr(response.text)) 
   blocks = response.json()
   
   chunks = {}
@@ -52,7 +51,9 @@ def get(fileId):
       for block_id in sorted(chunks.keys()):
           f.write(chunks[block_id])
   
-  print(f"File '{fileId}' retrieved successfully!")
+  print(f"File '{fileId}' retrieved successfully! Here's it's content : ")
+  with open(fileId, "rb") as f:
+    print(f.read().decode("utf-8"))
 
 
 
