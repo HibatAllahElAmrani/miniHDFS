@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  namenode:
+    build: ./namenode
+    ports: 
+      - 8000:8000
+
+  datanode1: 
+    build: ./datanode
+    ports: 
+      - 8001:8001
+
+  datanode2: 
+    build: ./datanode
+    ports: 
+      - 8002:8001
